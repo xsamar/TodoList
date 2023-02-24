@@ -16,23 +16,27 @@ struct ContentView: View {
         NavigationStack{
             // binding totdo to remove error Cannot use mutating member on immutable value: 'todo' is a 'let' constant
             List($todos) { $todo in
-                HStack{
-//                    if todo.isCompleted {
-//                        Image(systemName: "checkmark.circle.fill")
-//                    }else{
-//                        Image(systemName: "circle")
-//                    }
-                    Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
-                        .onTapGesture {
-                            todo.isCompleted.toggle()
-                        }
-                    VStack(alignment: .leading){
-                        Text(todo.title)
-                            .strikethrough(todo.isCompleted)
-                        if !todo.subTitle.isEmpty{
-                            Text(todo.subTitle)
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
+                NavigationLink {
+                   TodoDetailView()
+                }label: {
+                    HStack{
+    //                    if todo.isCompleted {
+    //                        Image(systemName: "checkmark.circle.fill")
+    //                    }else{
+    //                        Image(systemName: "circle")
+    //                    }
+                        Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
+                            .onTapGesture {
+                                todo.isCompleted.toggle()
+                            }
+                        VStack(alignment: .leading){
+                            Text(todo.title)
+                                .strikethrough(todo.isCompleted)
+                            if !todo.subTitle.isEmpty{
+                                Text(todo.subTitle)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }
