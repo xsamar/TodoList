@@ -11,11 +11,12 @@ struct ContentView: View {
     @State var todos = [Todo(title: "Buy some groceries", subTitle: "Vegetables and corn"),
                  Todo(title: "Pick up sister from school"),
                  Todo(title: "Prepare for class", isCompleted: true)]
-    
+    @State var showAddAlert = false
     var body: some View {
         NavigationStack{
             // binding totdo to remove error Cannot use mutating member on immutable value: 'todo' is a 'let' constant
-            List($todos) { $todo in
+            //editActions allow to delete by swiping and edit
+            List($todos, editActions: [.all]) { $todo in
                 NavigationLink {
                    TodoDetailView(todo: $todo)
                 }label: {
@@ -42,6 +43,20 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Todos")
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading){
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button{
+                        showAddAlert = true
+                    }label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }.sheet(isPresented: $showAddAlert){
+                NewTodoView()
+            }
         }
         
     }

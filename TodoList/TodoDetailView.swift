@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoDetailView: View {
-    //عشان يوم نغير   title  ونرجع للصفحة لازم نحط $
+    //عشان يوم نغير   الداتا  ونرجع للصفحة لازم نحط $ عشان نسيف الداتا
     //@State var todo = Todo(title: "Feed the demo cat")
     @Binding var todo : Todo
 
