@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct TodoDetailView: View {
-    @State var todo = Todo(title: "Feed the demo cat")
+    //عشان يوم نغير   title  ونرجع للصفحة لازم نحط $
+    //@State var todo = Todo(title: "Feed the demo cat")
+    @Binding var todo : Todo
+
     var body: some View {
         //form for asking user for data, list for dispplay data
         Form{
@@ -21,6 +24,6 @@ struct TodoDetailView: View {
 
 struct TodoDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoDetailView()
+        TodoDetailView(todo: .constant(Todo(title: "Fake demo todo")))
     }
 }

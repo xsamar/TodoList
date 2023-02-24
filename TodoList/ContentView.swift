@@ -17,7 +17,7 @@ struct ContentView: View {
             // binding totdo to remove error Cannot use mutating member on immutable value: 'todo' is a 'let' constant
             List($todos) { $todo in
                 NavigationLink {
-                   TodoDetailView()
+                   TodoDetailView(todo: $todo)
                 }label: {
                     HStack{
     //                    if todo.isCompleted {
