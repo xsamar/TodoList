@@ -10,20 +10,23 @@ import SwiftUI
 struct NewTodoView: View {
     @State var totoTile = ""
     @State var todoSubtile = ""
-    
+    @Binding var todos: [Todo]
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         Form{
             Section("Info"){
-                TextField("Title", text: $todoSubtile)
+                TextField("Title", text: $totoTile)
                 TextField("SubTitle", text: $todoSubtile)
             }
             Section("Action"){
                 Button("Save"){
-                    //todo
+                    let newTodo = Todo(title: totoTile, subTitle: todoSubtile)
+                    todos.append(newTodo)
+                    dismiss()
                 }
                 //destructive make the text red color
                 Button("Cancel", role: .destructive){
-                    //todo
+                    dismiss()
                 }
             }
         }
@@ -32,6 +35,6 @@ struct NewTodoView: View {
 
 struct NewTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTodoView()
+        NewTodoView(todos: .constant([]))
     }
 }

@@ -55,7 +55,7 @@ struct ContentView: View {
                     }
                 }
             }.sheet(isPresented: $showAddAlert){
-                NewTodoView()
+                NewTodoView(todos: $todos)
             }
         }
         
