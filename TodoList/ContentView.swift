@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var todos = [Todo(title: "Buy some groceries", subTitle: "Vegetables and corn"),
-                        Todo(title: "Pick up sister from school"),
-                        Todo(title: "Prepare for class", isCompleted: true),
-                        Todo(title: "Prepare for class", priority: .high),
-                        Todo(title: "Prepare for class", priority: .low)
-                        ]
+    @State var todos = [Todo(title: "Feed the cat", isCompleted: true),
+                        Todo(title: "Play with cat", subTitle: "Use his favourite string!"),
+                        Todo(title: "Get allergies"),
+                        Todo(title: "Run away from cat"),
+                        Todo(title: "Get a new cat")]
     @State var showAddAlert = false
     
     var body: some View {
@@ -41,6 +40,7 @@ struct ContentView: View {
                             VStack(alignment: .leading){
                                 Text(todo.title)
                                     .strikethrough(todo.isCompleted)
+                                    .foregroundColor(todo.textColor)
                                 if !todo.subTitle.isEmpty{
                                     Text(todo.subTitle)
                                         .font(.subheadline)

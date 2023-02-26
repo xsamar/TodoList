@@ -13,6 +13,7 @@ struct NewTodoView: View {
     @State var isalertPresent = false
     @State var tododate = Date()
     @State var selectedPriority: Priority = .medium
+    @State var textColor = Color.black
     @Binding var todos: [Todo]
     @Environment(\.dismiss) var dismiss
     
@@ -21,14 +22,16 @@ struct NewTodoView: View {
         Form{
             Section("Info"){
                 TextField("Title", text: $todoTile)
+                    .foregroundColor(textColor)
                 TextField("SubTitle", text: $todoSubtile)
                 DatePicker("Date", selection: $tododate)
                     .datePickerStyle(.automatic)
                 Picker("Priority", selection: $selectedPriority) {
-                    Text("🔵").tag(Priority.low)
-                    Text("🟢").tag(Priority.medium)
-                    Text("🔴").tag(Priority.high)
+                    Text("🔵 Low").tag(Priority.low)
+                    Text("🟢 Medium").tag(Priority.medium)
+                    Text("🔴 High").tag(Priority.high)
                 }
+                ColorPicker("Title Color", selection: $textColor)
             }
             Section("Action"){
                 Button("Save"){
@@ -37,7 +40,7 @@ struct NewTodoView: View {
                     }
                     else{
                       
-                        let newTodo = Todo(title: todoTile, subTitle: todoSubtile, todoDate: tododate, priority: selectedPriority)
+                        let newTodo = Todo(title: todoTile, subTitle: todoSubtile, todoDate: tododate, priority: selectedPriority, textColor: textColor)
                         todos.append(newTodo)
                         todos = todos.sorted(by: { $0.priority > $1.priority })
 

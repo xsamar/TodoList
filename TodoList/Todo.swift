@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 //store information
 struct Todo : Identifiable{
@@ -15,6 +16,7 @@ struct Todo : Identifiable{
     var todoDate = Date()
     var isCompleted = false
     var priority: Priority = .medium
+    var textColor = Color.black
 }
 
 enum Priority : Comparable{
