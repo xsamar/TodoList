@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-//store information
 struct Todo : Identifiable{
     var id = UUID()
     var title : String

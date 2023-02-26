@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct TodoDetailView: View {
-    //عشان يوم نغير   الداتا  ونرجع للصفحة لازم نحط $ عشان نسيف الداتا
-    //@State var todo = Todo(title: "Feed the demo cat")
     @Binding var todo : Todo
     var body: some View {
-        //form for asking user to enter data, list for display data
         Form{
             TextField("Title", text: $todo.title)
                 .foregroundColor(todo.textColor)

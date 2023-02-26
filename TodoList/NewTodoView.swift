@@ -47,7 +47,6 @@ struct NewTodoView: View {
                         dismiss()
                     }
                 }
-                //destructive make the text red color
                 Button("Cancel", role: .destructive){
                     dismiss()
                 }

@@ -17,8 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack{
-            // binding totdo to remove error Cannot use mutating member on immutable value: 'todo' is a 'let' constant
-            //editActions allow to delete by swiping and edit
+          
             List($todos, editActions: [.all]) { $todo in
                 if todo.isCompleted {
                     EmptyView()
@@ -28,11 +27,6 @@ struct ContentView: View {
                         TodoDetailView(todo: $todo)
                     }label: {
                         HStack{
-                            //                    if todo.isCompleted {
-                            //                        Image(systemName: "checkmark.circle.fill")
-                            //                    }else{
-                            //                        Image(systemName: "circle")
-                            //                    }
                             Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .onTapGesture {
                                     todo.isCompleted.toggle()
